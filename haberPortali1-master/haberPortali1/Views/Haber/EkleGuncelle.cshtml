@@ -1,0 +1,70 @@
+﻿@model Haber
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="ResimUrl" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border pt-3 mt-5">
+                <div class="row pb-3">
+                    <!-- Haber ekle veya güncelle başlığını doğru renk ile güncelleme -->
+                    <h2 style="color: #222325;">@(Model==null?"Haber Ekle":"Haberi Güncelle")</h2>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="HaberAdi" class="p-0"></label>
+                    <input asp-for="HaberAdi" class="form-control" />
+                    <span asp-validation-for="HaberAdi" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="HaberTuruId" class="p-0"></label>
+                    <select asp-for="HaberTuruId" asp-items="ViewBag.HaberTuruList" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tanim" class="p-0"></label>
+                    <input asp-for="Tanim" class="form-control" />
+                    <span asp-validation-for="Tanim" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Yazar" class="p-0"></label>
+                    <input asp-for="Yazar" class="form-control" />
+                    <span asp-validation-for="Yazar" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Deger" class="p-0"></label>
+                    <input asp-for="Deger" class="form-control" />
+                    <span asp-validation-for="Deger" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ResimUrl" class="p-0"></label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                <!-- Haber ekle veya güncelle butonları -->
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-lg" style="background-color: #222325; color: white; width:250px">Haberi Güncelle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-lg" style="background-color: #222325; color: white; width:250px">Haber Ekle</button>
+                }
+
+                <!-- Haberlere geri dön butonu -->
+                <a asp-controller="Haber" asp-action="Index" class="btn btn-lg" style="background-color: #222325; color: white; width:250px">
+                    Haberlere Geri Dön
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col-2">
+            @if (Model != null)
+            {
+            <img src="@Model.ResimUrl" width="100%" style="border-radius:7px; border:1px solid #bbb9b9" />
+            }
+        </div>
+
+    </div>
+
+</form>

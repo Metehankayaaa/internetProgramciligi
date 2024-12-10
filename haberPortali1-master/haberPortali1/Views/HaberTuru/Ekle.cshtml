@@ -1,0 +1,30 @@
+﻿@model HaberTuru
+
+<form method="post">
+
+    <div class="border pt-3 mt-5">
+        <div class="row pb-3">
+            <!-- Haber Türü Ekle başlığını doğru şekilde renklendirme -->
+            <h2 style="color: #222325;">Haber Türü Ekle</h2>
+            </hr>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Ad" class="p-0"></label>
+            <input asp-for="Ad" class="form-control" />
+            <span asp-validation-for="Ad" class="text-danger"></span>
+        </div>
+
+        <!-- Haber Türü Ekle Butonu -->
+        <button type="submit" class="btn btn-lg" style="background-color: #222325; color: white; width:300px">
+            Haber Türü Ekle
+        </button>
+
+        <!-- Haber Türlerine Geri Dön Butonu -->
+        <a asp-controller="HaberTuru" asp-action="Index" class="btn btn-lg" style="background-color: #222325; color: white; width:300px">
+            Haber Türlerine Geri Dön
+        </a>
+
+    </div>
+
+</form>

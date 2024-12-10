@@ -1,0 +1,45 @@
+﻿@model List<HaberTuru>
+
+@if (TempData["basarili"] != null)
+{
+    <div class="alert alert-success text-center" role="alert">
+        <strong>Başarılı!</strong> @TempData["basarili"]
+    </div>
+}
+
+<div class="container mt-5">
+    <!-- Başlık -->
+    <div class="row pt-3 pb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-3" style="color: #333;">Haber Türleri</h1>
+            <p class="lead" style="color: #555;">Mevcut haber türlerinizi yönetebilir ve yeni türler oluşturabilirsiniz.</p>
+        </div>
+    </div>
+
+    <!-- Dikey Tablo Düzeni -->
+    <div class="row">
+        @foreach(var haberTuru in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <!-- Haber Türü ve ID'yi yer değiştiriyoruz -->
+                        <h5 class="card-title">Haber Türü: @haberTuru.Ad</h5>
+                        <p class="card-text">ID: @haberTuru.Id</p>
+                        <a asp-controller="HaberTuru" asp-action="Guncelle" asp-route-id="@haberTuru.Id" class="btn btn-dark btn-sm w-100 mb-2">Güncelle</a>
+                        <a asp-controller="HaberTuru" asp-action="Sil" asp-route-id="@haberTuru.Id" class="btn btn-danger btn-sm w-100">Sil</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Yeni Haber Türü Oluştur Butonu -->
+    <div class="row pt-3 pb-2">
+        <div class="col-12 text-center">
+            <a asp-controller="HaberTuru" asp-action="Ekle" class="btn btn-lg" style="background-color: #222325; color: white; padding: 12px 40px; font-size: 18px;">
+                Yeni Haber Türü Oluştur
+            </a>
+        </div>
+    </div>
+</div>
